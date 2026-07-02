@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.student_grpc";
+option java_outer_classname = "StudentProto";
+
+service StudentService {
+
+  rpc AddStudent(StudentRequest) returns (StudentResponse);
+
+  rpc GetStudent(StudentId) returns (StudentResponse);
+
+  rpc UpdateStudent(StudentRequest) returns (StudentResponse);
+
+  rpc DeleteStudent(StudentId) returns (DeleteResponse);
+
+  rpc GetAllStudents(Empty) returns (StudentList);
+
+}
+
+message Empty {
+
+}
+
+message StudentRequest {
+
+  int32 id = 1;
+
+  string name = 2;
+
+  string department = 3;
+
+}
+
+message StudentId {
+
+  int32 id = 1;
+
+}
+
+message StudentResponse {
+
+  int32 id = 1;
+
+  string name = 2;
+
+  string department = 3;
+
+  string message = 4;
+
+}
+
+message StudentList {
+
+  repeated StudentResponse students = 1;
+
+}
+
+message DeleteResponse {
+
+  string message = 1;
+
+}
